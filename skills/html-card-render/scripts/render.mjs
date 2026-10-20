@@ -54,6 +54,7 @@ const [W, H] = opts.size.toLowerCase().split('x').map(Number);
 const SCALE = Number(opts.scale);
 if (!(W > 0 && H > 0 && SCALE > 0)) { console.error('bad --size or --scale'); process.exit(2); }
 if (typeof WebSocket === 'undefined') { console.error('Node 22+ is required (global WebSocket).'); process.exit(2); }
+if (!/^https?:|^file:/.test(input) && !fs.existsSync(input)) { console.error('input file not found: ' + input); process.exit(2); }
 const url = /^https?:|^file:/.test(input) ? input : pathToFileURL(path.resolve(input)).href;
 
 // ---------- find a browser ----------

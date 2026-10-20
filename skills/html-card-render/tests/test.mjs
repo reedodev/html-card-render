@@ -15,4 +15,6 @@ const pngs = fs.readdirSync(d).filter((f) => f.endsWith('.png'));
 const sizes = pngs.map((f) => { const b = fs.readFileSync(path.join(d, f)); return `${b.readUInt32BE(16)}x${b.readUInt32BE(20)}`; });
 fs.rmSync(d, { recursive: true, force: true });
 if (r.status !== 0 || pngs.length !== 3 || sizes.some((s) => s !== '2160x2700')) { console.log('FAIL', r.status, pngs, sizes, r.stderr.slice(-300)); process.exit(1); }
-console.log(`html-card-render ok: ${pngs.length} pages at ${sizes[0]}`);
+const miss = spawnSync('node', [script, path.join(os.tmpdir(), 'no-such-file-xyz.html'), path.join(os.tmpdir(), 'x.png')], { encoding: 'utf8' });
+if (miss.status !== 2) { console.log('FAIL missing input should exit 2, got ' + miss.status); process.exit(1); }
+console.log(`html-card-render ok (missing input exits 2): ${pngs.length} pages at ${sizes[0]}`);
