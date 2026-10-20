@@ -137,7 +137,7 @@ async function main() {
     // Chrome prints "DevTools listening on ws://..." to stderr
     const wsUrl = await new Promise((resolve, reject) => {
       let buf = '';
-      const t = setTimeout(() => reject(new Error('browser did not start')), 15000);
+      const t = setTimeout(() => reject(new Error('browser did not start in 30 s')), 30000);
       proc.stderr.on('data', (d) => {
         buf += d;
         const m = buf.match(/DevTools listening on (ws:\/\/\S+)/);
