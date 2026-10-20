@@ -55,6 +55,13 @@ node skills/html-card-render/scripts/render.mjs skills/html-card-render/template
 
 `node tests/run.mjs`가 SKILL.md 형식을 검사하고 예시 파일로 스크립트를 실제로 실행합니다. 푸시할 때마다 GitHub Actions가 같은 시험을 돌립니다(위 test 배지).
 
+<!-- credits -->
+## 출처와 영감
+
+- **캡처 방식**: 크롬 개발자 프로토콜([Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/))의 공개 명령(화면 크기 지정, 화면 캡처)을 씁니다. 렌더 스크립트와 넘침 검사는 이 저장소에서 만든 것입니다.
+- **디자인 과정**: 템플릿의 카드 모양(순백 바탕, 굵은 검은 테두리, 코발트 강조색 하나)은 작성자가 승인한 카드에서 왔고, 그 카드를 만들 때 [anthropics/skills의 frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design)(Apache 2.0)의 절차를 참고했습니다. 그 스킬의 글이나 코드는 옮기지 않았습니다.
+- **글꼴**: 템플릿은 [Pretendard](https://github.com/orioncactus/pretendard)(SIL OFL 1.1)를 웹 글꼴로 불러옵니다.
+
 ## 만든 사람
 
 **리도**, AI 좌충우돌 실습 중인 20년차 엔지니어입니다. 매일 AI에게 일을 맡기다가 막힌 부분을 고쳐 가며 이 스킬을 만들었습니다.
@@ -67,5 +74,8 @@ node skills/html-card-render/scripts/render.mjs skills/html-card-render/template
 ## English
 
 Zero-dependency HTML to PNG renderer over the Chrome DevTools Protocol: exact pixel sizes, multi-page card batches, and an in-page overflow / broken-image check before capture.
+
+**Credits.**
+- Uses public [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) commands; the renderer and overflow QA are original. Card style is the author's own, designed while following the process in [anthropics/skills frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) (no text or code copied). Font: [Pretendard](https://github.com/orioncactus/pretendard) (OFL).
 
 Install: `/plugin marketplace add reedodev/html-card-render` then `/plugin install html-card-render@html-card-render`, or copy `skills/html-card-render` into `~/.claude/skills/`. See [SKILL.md](skills/html-card-render/SKILL.md) for the full procedure. MIT License; third-party models, fonts and libraries keep their own licenses.

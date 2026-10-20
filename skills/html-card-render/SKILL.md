@@ -72,3 +72,9 @@ node scripts/render.mjs card.html out.png --size 1080x1350 --scale 2 --pages --j
 - 템플릿의 Pretendard 글꼴은 인터넷(CDN)에서 받아 옵니다. 오프라인이면 맑은 고딕 같은 시스템 글꼴로 바뀌어 줄바꿈 위치가 달라질 수 있습니다.
 - 넘침 검사는 `overflow: hidden`이나 `nowrap`처럼 잘리는 조건이 있는 요소를 기준으로 판단합니다. 그냥 다음 줄로 넘어가 레이아웃이 밀리는 경우는 카드 밖으로 튀어나올 때만 잡힙니다.
 - 동영상, 애니메이션 중간 프레임은 찍지 않습니다. 정지된 화면만 다룹니다.
+
+<!-- credits -->
+## 출처와 영감
+- **캡처 방식**: 크롬 개발자 프로토콜([Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/))의 공개 명령(화면 크기 지정, 화면 캡처)을 씁니다. 렌더 스크립트와 넘침 검사는 이 저장소에서 만든 것입니다.
+- **디자인 과정**: 템플릿의 카드 모양(순백 바탕, 굵은 검은 테두리, 코발트 강조색 하나)은 작성자가 승인한 카드에서 왔고, 그 카드를 만들 때 [anthropics/skills의 frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design)(Apache 2.0)의 절차를 참고했습니다. 그 스킬의 글이나 코드는 옮기지 않았습니다.
+- **글꼴**: 템플릿은 [Pretendard](https://github.com/orioncactus/pretendard)(SIL OFL 1.1)를 웹 글꼴로 불러옵니다.
