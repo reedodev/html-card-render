@@ -9,8 +9,10 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const script = path.join(here, '..', 'scripts', 'render.mjs');
 if (typeof WebSocket === 'undefined') { console.log('SKIP: Node 22+ needed'); process.exit(77); }
 const d = fs.mkdtempSync(path.join(os.tmpdir(), 'cardr-'));
-const r = spawnSync('node', [script, path.join(here, '..', 'templates', 'card-4x5.html'), path.join(d, 'card.png'), '--size', '1080x1350', '--scale', '2', '--pages', '--json'], { encoding: 'utf8', timeout: 90000 });
-if (/chrome|edge|browser/i.test(r.stderr) && r.status === 2) { console.log('SKIP: no Chrome/Edge found'); process.exit(77); }
+const render = () => spawnSync('node', [script, path.join(here, '..', 'templates', 'card-4x5.html'), path.join(d, 'card.png'), '--size', '1080x1350', '--scale', '2', '--pages', '--json'], { encoding: 'utf8', timeout: 90000 });
+let r = render();
+if (r.status === 2) { console.log('first try failed, retrying once: ' + (r.stderr || '').trim().slice(-200)); r = render(); }
+if (r.status === 2 && /not found|no chrome|no browser|CHROME_PATH/i.test(r.stderr)) { console.log('SKIP: no Chrome/Edge found: ' + r.stderr.trim().slice(-200)); process.exit(77); }
 const pngs = fs.readdirSync(d).filter((f) => f.endsWith('.png'));
 const sizes = pngs.map((f) => { const b = fs.readFileSync(path.join(d, f)); return `${b.readUInt32BE(16)}x${b.readUInt32BE(20)}`; });
 fs.rmSync(d, { recursive: true, force: true });
