@@ -1,0 +1,21 @@
+{
+  "name": "html-card-render",
+  "owner": {
+    "name": "Reedo"
+  },
+  "metadata": {
+    "description": "Zero-dependency HTML to PNG renderer over the Chrome DevTools Protocol: exact pixel sizes, multi-page card batches, and an in-page overflow / broken-image check before capture.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "html-card-render",
+      "description": "Zero-dependency HTML to PNG renderer over the Chrome DevTools Protocol: exact pixel sizes, multi-page card batches, and an in-page overflow / broken-image check before capture.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/html-card-render"
+      ]
+    }
+  ]
+}
